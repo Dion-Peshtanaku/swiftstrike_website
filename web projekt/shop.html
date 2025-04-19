@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Shop - SneakerStore</title>
+  <div class="countdown-banner">
+    ⚡ Flash Sale! Ends in: <span id="countdown">00:00:00</span>
+</div>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="swiftstrike.css">
+</head>
+<body>
+
+  <div id="loadingSpinner" class="text-center my-5" style="display: none;">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="home.html"><img src="SwiftStrike.png" alt="SwiftStrike Logo" width="60px" height="60px" class="navbar-logo"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <input type="text" id="searchBar" class="form-control" placeholder="Search products..." onkeyup="liveSearch()">
+          <li class="nav-item">
+            <a class="nav-link" href="home.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="shop.html">Shop</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container my-5">
+    <h1 class="text-center mb-4">Sneaker Shop</h1>
+    <p class="text-center mb-5">Explore our exclusive sneaker collection. Find the perfect pair for you!</p>
+    
+    <div class="row">
+     
+      <div class="col-md-3 filter-section">
+        <h4>Filters</h4>
+        
+        <!-- <div class="mb-4">
+          <h5>Brand</h5>
+          <ul class="list-unstyled">
+            <li><input type="checkbox" class="brand-filter" value="Nike"> Nike</li>
+            <li><input type="checkbox" class="brand-filter" value="Adidas"> Adidas</li>
+            <li><input type="checkbox" class="brand-filter" value="Puma"> Puma</li>
+            <li><input type="checkbox" class="brand-filter" value="Reebok"> Reebok</li>
+            <li><input type="checkbox" class="brand-filter" value="NewBalance"> New Balance</li>
+          </ul>
+        </div> -->
+
+       
+        <div class="mb-4">
+          <h5>Price Range</h5>
+          <div class="price-range">
+            <input type="range" class="form-range" id="priceRange" min="50" max="300" value="200">
+            <span id="priceValue">$200</span>
+          </div>
+        </div>
+
+        
+        <div class="mt-4">
+          <h4>Your Wishlist</h4>
+          <div class="card">
+            <div class="card-body">
+              <ul id="wishlistItems" class="list-group list-group-flush">
+                
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+     
+      <div class="col-md-9">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+         
+          <div class="col product-card" data-brand="Nike" data-price="150" data-size="10">
+            <div class="card">
+              <img src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/256d967e-35a5-48f2-9cb7-a4ef6dd6745b/W+AIR+MAX+DN.png" class="card-img-top product-img" alt="Nike Air Max">
+              <div class="card-body">
+                <h5 class="card-title">Nike Air Max</h5>
+                <p class="card-text">The Nike Air Max offers unmatched comfort and style for all-day wear.</p>
+                <p class="card-text"><strong>$150</strong></p>
+                <a href="#" class="btn btn-primary">Add to Cart</a>
+                <button class="btn btn-outline-danger wishlist-btn" onclick="toggleWishlist(this, 'Nike Air Max', 150)">
+                  <i class="fa fa-heart"></i> Add to Wishlist
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col product-card" data-brand="Adidas" data-price="180" data-size="9">
+            <div class="card">
+              <img src="https://static.ftshp.digital/img/p/1/0/8/5/0/8/9/1085089-full_product.jpg" class="card-img-top product-img" alt="Adidas Ultraboost">
+              <div class="card-body">
+                <h5 class="card-title">Adidas Ultraboost</h5>
+                <p class="card-text">Enjoy the ultimate running experience with the Adidas Ultraboost shoes.</p>
+                <p class="card-text"><strong>$180</strong></p>
+                <a href="#" class="btn btn-primary">Add to Cart</a>
+                <button class="btn btn-outline-danger wishlist-btn" onclick="toggleWishlist(this, 'Adidas Ultraboost', 180)">
+                  <i class="fa fa-heart"></i> Add to Wishlist
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col product-card" data-brand="Puma" data-price="130" data-size="8">
+            <div class="card">
+              <img src="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_400,h_400/global/400957/02/sv01/fnd/PNA/fmt/png/RS-X-Alternate-Route-Sneakers" class="card-img-top product-img" alt="Puma RS-X">
+              <div class="card-body">
+                <h5 class="card-title">Puma RS-X</h5>
+                <p class="card-text">With a futuristic design, the Puma RS-X is perfect for both style and comfort.</p>
+                <p class="card-text"><strong>$130</strong></p>
+                <a href="#" class="btn btn-primary">Add to Cart</a>
+                <button class="btn btn-outline-danger wishlist-btn" onclick="toggleWishlist(this, 'Puma RS-X', 130)">
+                  <i class="fa fa-heart"></i> Add to Wishlist
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col product-card" data-brand="Reebok" data-price="110" data-size="7">
+            <div class="card">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVDg2IBmW_jRcsk1fLDzCX8l3G9cT1PPAx3g&s" class="card-img-top product-img" alt="Reebok Classic">
+              <div class="card-body">
+                <h5 class="card-title">Reebok Classic</h5>
+                <p class="card-text">The timeless Reebok Classic, perfect for casual and streetwear looks.</p>
+                <p class="card-text"><strong>$110</strong></p>
+                <a href="#" class="btn btn-primary">Add to Cart</a>
+                <button class="btn btn-outline-danger wishlist-btn" onclick="toggleWishlist(this, 'Reebok Classic', 110)">
+                  <i class="fa fa-heart"></i> Add to Wishlist
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col product-card" data-brand="NewBalance" data-price="90" data-size="8">
+            <div class="card">
+              <img src="data:image/jpeg;base64,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" class="card-img-top product-img" alt="New Balance 574">
+              <div class="card-body">
+                <h5 class="card-title">New Balance 574</h5>
+                <p class="card-text">A classic silhouette, the New Balance 574 is a must-have for sneaker enthusiasts.</p>
+                <p class="card-text"><strong>$90</strong></p>
+                <a href="#" class="btn btn-primary">Add to Cart</a>
+                <button class="btn btn-outline-danger wishlist-btn" onclick="toggleWishlist(this, 'New Balance 574', 90)">
+                  <i class="fa fa-heart"></i> Add to Wishlist
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col product-card" data-brand="Nike" data-price="220" data-size="9">
+            <div class="card">
+              <img src="" class="card-img-top product-img" alt="Nike Zoom">
+              <div class="card-body">
+                <h5 class="card-title">Nike Zoom</h5>
+                <p class="card-text">The Nike Zoom is perfect for speed and agility, with a sleek design and responsive cushioning.</p>
+                <p class="card-text"><strong>$220</strong></p>
+                <a href="#" class="btn btn-primary">Add to Cart</a>
+                <button class="btn btn-outline-danger wishlist-btn" onclick="toggleWishlist(this, 'Nike Zoom', 220)">
+                  <i class="fa fa-heart"></i> Add to Wishlist
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col product-card" data-brand="Reebok" data-price="160" data-size="7">
+            <div class="card">
+              <img src="https://www.sportvision.mk/files/images/slike_proizvoda/media/GW5/GW5150/images/GW5150.jpg" class="card-img-top product-img" alt="Reebok Nano">
+              <div class="card-body">
+                <h5 class="card-title">Reebok Nano</h5>
+                <p class="card-text">The Reebok Nano is built for training with responsive support and stability to keep you performing at your best.</p>
+                <p class="card-text"><strong>$160</strong></p>
+                <a href="#" class="btn btn-primary">Add to Cart</a>
+                <button class="btn btn-outline-danger wishlist-btn" onclick="toggleWishlist(this, 'Reebok Nano', 160)">
+                  <i class="fa fa-heart"></i> Add to Wishlist
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footerContainer">
+      <div class="socialIcons">
+        <a href="https://www.facebook.com/nike/"><i class="fa-brands fa-facebook"></i></a>
+        <a href="https://www.instagram.com/nike/"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://x.com/Nike?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"><i class="fa-brands fa-twitter"></i></a>
+      </div>
+      <div class="footerNav">
+        <ul>
+          <li><a href="home.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footerBottom">
+      <p>&copy; 2025 SneakerStore. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    function liveSearch() {
+  const query = document.getElementById('searchBar').value.toLowerCase();
+  
+  const products = document.querySelectorAll('.product-card');
+  
+  products.forEach(product => {
+    const title = product.querySelector('.card-title').textContent.toLowerCase();
+    const description = product.querySelector('.card-text').textContent.toLowerCase();
+    
+    if (title.includes(query) || description.includes(query)) {
+      product.style.display = 'block';
+    } else {
+      product.style.display = 'none'; 
+    }
+  });
+}
+
+     let wishlist = [];
+
+
+function loadWishlist() {
+  const savedWishlist = localStorage.getItem('wishlist');
+  if (savedWishlist) {
+    wishlist = JSON.parse(savedWishlist);
+    updateWishlistUI();
+  }
+}
+
+
+function saveWishlist() {
+  localStorage.setItem('wishlist', JSON.stringify(wishlist));
+}
+
+function updateWishlistUI() {
+  const wishlistItemsContainer = document.getElementById('wishlistItems');
+  wishlistItemsContainer.innerHTML = ''; 
+
+  wishlist.forEach(item => {
+    const listItem = document.createElement('li');
+    listItem.classList.add('list-group-item');
+    listItem.dataset.productName = item.name;
+    listItem.textContent = `${item.name} - $${item.price}`;
+    wishlistItemsContainer.appendChild(listItem);
+  });
+}
+
+
+function toggleWishlist(button, productName, price) {
+  const index = wishlist.findIndex(item => item.name === productName);
+
+  if (index === -1) {
+   
+    wishlist.push({ name: productName, price: price });
+    button.classList.replace('btn-outline-danger', 'btn-success');
+    button.innerHTML = '<i class="fa fa-heart"></i> Added to Wishlist';
+  } else {
+   
+    wishlist.splice(index, 1);
+    button.classList.replace('btn-success', 'btn-outline-danger');
+    button.innerHTML = '<i class="fa fa-heart"></i> Add to Wishlist';
+  }
+
+ 
+  saveWishlist();
+  updateWishlistUI();
+}
+
+
+document.addEventListener('DOMContentLoaded', loadWishlist);
+
+
+    document.getElementById('loadingSpinner').style.display = 'block'; 
+    setTimeout(function() {
+      document.getElementById('loadingSpinner').style.display = 'none';
+    }, 3000);
+
+    document.addEventListener('DOMContentLoaded', function() {
+      var priceRange = document.getElementById('priceRange');
+      var priceValue = document.getElementById('priceValue');
+      var productCards = document.getElementsByClassName('product-card');
+      var emptyMessage = document.getElementById('emptyStateMessage');
+
+      function updatePriceFilter() {
+        var maxPrice = parseInt(priceRange.value);
+        priceValue.textContent = "$" + maxPrice;
+
+        var visibleCount = 0;
+
+        for (var i = 0; i < productCards.length; i++) {
+          var card = productCards[i];
+          var productPrice = parseInt(card.getAttribute('data-price'));
+          if (productPrice <= maxPrice) {
+            card.style.display = "block";
+            visibleCount++;
+          } else {
+            card.style.display = "none";
+          }
+        }
+
+        if (emptyMessage) {
+          if (visibleCount === 0) {
+            emptyMessage.style.display = "block";
+          } else {
+            emptyMessage.style.display = "none";
+          }
+        }
+      }
+
+      priceRange.addEventListener('input', updatePriceFilter);
+      updatePriceFilter();
+    });
+    function createRandomSale() {
+    
+    const products = document.querySelectorAll('.product-card');
+    if(products.length === 0) return;
+
+    
+    const randomProduct = products[Math.floor(Math.random() * products.length)];
+    const priceElement = randomProduct.querySelector('.card-text strong');
+    const originalPrice = parseFloat(priceElement.textContent.replace('$', ''));
+    
+   
+    const discount = Math.floor(Math.random() * 35) + 10;
+    const discountedPrice = originalPrice * (1 - discount/100);
+  
+    const saleBadge = document.createElement('div');
+    saleBadge.className = 'sale-badge';
+    saleBadge.innerHTML = `SALE! ${discount}% OFF`;
+    randomProduct.querySelector('.card').appendChild(saleBadge);
+
+    
+    priceElement.innerHTML = `
+        <span class="original-price">$${originalPrice}</span>
+        $${discountedPrice.toFixed(2)}
+    `;
+
+    // (30 minutes to 2 hours)
+    const totalSeconds = Math.floor(Math.random() * (7200 - 1800) + 1800);
+    let remaining = totalSeconds;
+
+    
+    const countdownElement = document.getElementById('countdown');
+    const countdownInterval = setInterval(() => {
+        remaining--;
+        
+        const hours = Math.floor(remaining / 3600);
+        const minutes = Math.floor((remaining % 3600) / 60);
+        const seconds = remaining % 60;
+        
+        countdownElement.textContent = 
+            `${String(hours).padStart(2, '0')}:` +
+            `${String(minutes).padStart(2, '0')}:` +
+            `${String(seconds).padStart(2, '0')}`;
+
+        
+        if(remaining <= 0) {
+            clearInterval(countdownInterval);
+            saleBadge.remove();
+            priceElement.innerHTML = `$${originalPrice}`;
+            countdownElement.textContent = "SALE ENDED!";
+        }
+    }, 1000);
+}
+
+
+window.addEventListener('DOMContentLoaded', createRandomSale);
+
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
