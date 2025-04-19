@@ -44,8 +44,6 @@ To get started with the project locally:
 ## Contributing
 Feel free to fork this repository and submit pull requests. If you'd like to contribute, please ensure that your code follows best practices and adheres to the existing style of the project.
 
-## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Contact Us
 For any questions or suggestions, feel free to contact us at:
