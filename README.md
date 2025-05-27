@@ -10,9 +10,6 @@ Swift Strike is a responsive e-commerce website designed to showcase and sell li
 - An about page providing insight into the company
 - A product listing page for sneakers, including descriptions and links to buy
 
-## Current Status
-This project is still in progress. We are working on adding a database to handle products, customer information, and transactions more efficiently. As of now, product details are hard-coded, and we are focusing on the front-end development. The next major step will be integrating a database for better data management and interaction.
-
 ## Features
 - **Responsive Design:** The site adapts to various screen sizes, providing a seamless experience on desktops, tablets, and smartphones.
 - **Dynamic Content:** The homepage carousel features dynamic, eye-catching images and product promotions.
@@ -41,12 +38,3 @@ To get started with the project locally:
     ```
 3. Open the `index.html` or any HTML file in your browser to view the website.
 
-## Contributing
-Feel free to fork this repository and submit pull requests. If you'd like to contribute, please ensure that your code follows best practices and adheres to the existing style of the project.
-
-
-## Contact Us
-For any questions or suggestions, feel free to contact us at:
-- **Phone:** +355 0694510763
-
-Stay tuned for future updates as we continue to develop Swift Strike into the ultimate sneaker shopping experience!
